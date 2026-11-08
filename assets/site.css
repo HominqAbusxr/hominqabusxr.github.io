@@ -354,6 +354,7 @@ h1 span, h2 span { color: var(--accent); }
 }
 .profile > div:nth-child(2) { align-self: center; }
 .profile > div:nth-child(2) > p { max-width: 34rem; font-size: clamp(1.05rem, 1.5vw, 1.3rem); }
+.profile > div:nth-child(2) > p + p { margin-top: .8rem; }
 
 .profile-skills { margin-block: 1.45rem .55rem; }
 .profile-skills div {
@@ -405,6 +406,7 @@ h1 span, h2 span { color: var(--accent); }
 }
 
 .contact-bottom li a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.pride-flag { margin-inline-start: .4rem; border-radius: 2px; vertical-align: middle; }
 
 .resume, .resume-footer { max-width: 64rem; }
 .resume { padding-top: clamp(2.5rem, 6vw, 5rem); }
