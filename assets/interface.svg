@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 506">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0v24" fill="none" stroke="#33332f" stroke-width="1"/>
+    </pattern>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse">
+      <path d="M-1 1L1-1M0 6L6 0M5 7L7 5" stroke="#bd361e" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <path d="M0 0h560v506H0z" fill="#20201e"/>
+  <path d="M0 0h560v506H0z" fill="url(#grid)"/>
+  <g fill="none" stroke="#69675e">
+    <path d="M56 64h448v372H56z" stroke-dasharray="4 5"/>
+    <path d="M56 54v20m-10-10h20m438-10v20m-10-10h20M56 426v20m-10-10h20m438-10v20m-10-10h20"/>
+    <path d="M80 406l400-314M80 92l400 314M280 64v372M56 250h448" stroke-dasharray="2 8"/>
+  </g>
+  <g transform="translate(70 70)">
+    <path d="M0 255h79v-52h76v-55h77V93h78V38h110v84h-79v54h-78v54h-77v54h-77v54H0z" fill="#151514" stroke="#ff6545" stroke-width="1.5" transform="translate(16 22)"/>
+    <path d="M0 255h79v-52h76v-55h77V93h78V38h110v84h-79v54h-78v54h-77v54h-77v54H0z" fill="#ff603d"/>
+    <path d="M0 299h109v-54h77v-54h77v-54h78V83h79v39h-79v54h-78v54h-77v54h-77v54H0z" fill="url(#hatch)"/>
+    <path d="M0 276h96v-53h77v-55h78v-55h77V59h92" fill="none" stroke="#231e19" stroke-width="2"/>
+    <path d="M0 294h100v-52h77v-56h77v-54h78V77h88" fill="none" stroke="#f8eade" stroke-width="1.5"/>
+    <g fill="#ff603d" stroke="#241d18" stroke-width="2">
+      <circle cx="96" cy="276" r="6"/>
+      <circle cx="173" cy="223" r="6"/>
+      <circle cx="251" cy="168" r="6"/>
+      <circle cx="328" cy="113" r="6"/>
+    </g>
+  </g>
+  <g fill="#d8cfc0" font-family="monospace" font-size="12" letter-spacing="1.8">
+    <text x="69" y="104">Y</text>
+    <text x="487" y="422">X</text>
+  </g>
+  <path d="M82 139v30m-15-15h30m373 157v30m-15-15h30" stroke="#ff6545" stroke-width="1.5"/>
+</svg>
