@@ -322,6 +322,12 @@ h1 span, h2 span { color: var(--accent); }
 }
 
 .profile h2 { font-size: clamp(2.6rem, 5.25vw, 5rem); }
+.profile-photo {
+  display: block;
+  margin-top: 1.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
 .profile > div:nth-child(2) { align-self: center; }
 .profile > div:nth-child(2) > p { max-width: 34rem; font-size: clamp(1.05rem, 1.5vw, 1.3rem); }
 
