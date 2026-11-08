@@ -406,7 +406,12 @@ h1 span, h2 span { color: var(--accent); }
 }
 
 .contact-bottom li a { display: inline-flex; align-items: center; min-height: 2.75rem; }
-.contact-identity { display: flex; align-items: center; gap: .55rem; }
+.contact-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-inline-start: auto;
+}
 .pride-flag { display: block; flex: none; outline: 1px solid #c5b5a4; }
 
 .resume, .resume-footer { max-width: 64rem; }
