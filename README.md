@@ -11,7 +11,7 @@ Run `python3 -m http.server 8080` in the checkout and open `http://localhost:808
 - Lead with an e4education case study if you have a public site, archived URL or approved screenshot. Explain the original brief, the parts of the frontend you owned and one constraint that shaped the implementation.
 - Add an approved screenshot or a short recording of the actual webOS fork, especially remote focus moving between categories, channels and the programme guide. A repo link already gives visitors the source.
 - Add one real device capture of Tom’s Trains showing a departure and a tracked service. A short caption can explain why the board sorts by arrival time.
-- Give the Nucleus case study a measured outcome if you can share one, such as a verified comparison of the requests or loading time. Keep private code, customer data and internal links out of the portfolio.
+- Expand NucleusOne into a full case study with an approved screenshot from each product area. Explain how the two-developer team divided the work, which decisions you owned, and what a customer can now do in one place. Add a verified outcome if you can share one.
 
 ## Design directions
 

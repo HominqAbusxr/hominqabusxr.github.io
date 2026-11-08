@@ -290,12 +290,18 @@ h1 span, h2 span { color: var(--accent); }
 }
 
 .feature-main p, .project p { max-width: 38rem; }
+.feature-intro { font-size: 1.15rem; }
 
-details { margin-top: .9rem; }
-summary { width: fit-content; padding-block: .5rem; cursor: pointer; font-weight: 700; }
-summary:hover { text-decoration: underline; text-underline-offset: .24em; }
-summary::marker { color: var(--orange); }
-.case-notes p + p { margin-top: .7rem; }
+.product-areas { margin-block: 1.4rem .6rem; }
+.product-areas div {
+  display: grid;
+  grid-template-columns: minmax(10.75rem, .55fr) 1fr;
+  gap: .15rem 1rem;
+  padding-block: .7rem;
+  border-top: 1px solid #66645c;
+}
+.product-areas dt { font-weight: 700; }
+.product-areas dd { color: #d1cdc3; }
 
 .project-grid {
   display: grid;
@@ -435,7 +441,7 @@ summary::marker { color: var(--orange); }
   .hero { grid-template-columns: 1fr; row-gap: 1.75rem; }
   .hero h1 { font-size: clamp(4.75rem, 21vw, 8.4rem); }
   .hero-footer { margin-top: 0; }
-  .work-feature, .project-grid, .profile, .resume-section { grid-template-columns: 1fr; }
+  .work-feature, .project-grid, .profile, .resume-section, .product-areas div { grid-template-columns: 1fr; }
   .work-feature { row-gap: 1.35rem; }
 }
 
