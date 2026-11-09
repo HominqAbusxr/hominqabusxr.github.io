@@ -90,10 +90,24 @@ button { font: inherit; }
   white-space: nowrap;
 }
 
+.icon {
+  display: inline-block;
+  flex: none;
+  width: 1em;
+  height: 1em;
+  vertical-align: -.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: .85;
+}
+
+.icon-down { width: .5em; }
+
 .wordmark-icon {
+  width: 1rem;
+  height: 1rem;
   color: var(--accent);
-  font-size: 1.4rem;
-  line-height: 1;
+  stroke-width: 1.2;
 }
 
 .hero {
@@ -184,13 +198,11 @@ h1 span, h2 span { color: var(--accent); }
 
 .button:focus-visible { outline-color: var(--ink); }
 
-.text-link span, .button span, .contact-email span {
-  display: inline-block;
-  flex: none;
+.text-link .icon, .button .icon, .contact-email .icon {
   transition: transform .18s ease-out;
 }
 
-.text-link:hover span, .button:hover span, .contact-email:hover span {
+.text-link:hover .icon, .button:hover .icon, .contact-email:hover .icon {
   transform: translate(2px, -2px);
 }
 
